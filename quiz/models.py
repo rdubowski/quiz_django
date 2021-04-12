@@ -40,7 +40,7 @@ class Question(Updated):
         (0, _('Multiple Choices')),
     )
 
-    quiz = models.ForeignKey(Category, default=1, on_delete=models.DO_NOTHING)
+    quiz = models.ForeignKey(Quizzes, default=1, on_delete=models.DO_NOTHING)
     technique = models.IntegerField(choices=TYPE, default=0, verbose_name=_("Type of Question"))
     title =  models.CharField(max_length=255, verbose_name=_("Quiz Title"))
     difficulty = models.IntegerField(choices=SCALE, default=0, verbose_name=_('Difficulty'))
@@ -59,7 +59,7 @@ class Question(Updated):
 
 
 class Answer(Updated):
-    question = models.ForeignKey(Question, default=1, on_delete=models.DO_NOTHING)
+    question = models.ForeignKey(Question,related_name='answer', default=1, on_delete=models.DO_NOTHING)
     answer_text = models.CharField(max_length=255, verbose_name=_("Quiz Title"))
     is_right = models.BooleanField(default=False)
        

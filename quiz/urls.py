@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import Quiz
+from .views import Quiz, RandomQuestion
 app_name = 'quiz'
 
 urlpatterns = [
